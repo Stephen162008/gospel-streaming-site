@@ -61,26 +61,26 @@
   </div>
 
   <script>
-    const chinaBedala = document.getElementById("chinaBedala");
-    const eniNalu = document.getElementById("eniNalu");
+    const audios = document.querySelectorAll("audio");
 
-    // Auto-play Eni Nalu when China Bedala ends
-    chinaBedala.addEventListener("ended", () => {
-      eniNalu.play();
-    });
+    audios.forEach((audio, index) => {
+      // Pause other audios when one is played
+      audio.addEventListener("play", () => {
+        audios.forEach((otherAudio) => {
+          if (otherAudio !== audio && !otherAudio.paused) {
+            otherAudio.pause();
+            otherAudio.currentTime = 0;
+          }
+        });
+      });
 
-    // Stop China Bedala if Eni Nalu is clicked
-    eniNalu.addEventListener("play", () => {
-      if (!chinaBedala.paused) {
-        chinaBedala.pause();
-      }
-    });
-
-    // Optional: Stop Eni Nalu if China Bedala is clicked
-    chinaBedala.addEventListener("play", () => {
-      if (!eniNalu.paused) {
-        eniNalu.pause();
-      }
+      // Auto-play next song when current ends
+      audio.addEventListener("ended", () => {
+        const nextAudio = audios[index + 1];
+        if (nextAudio) {
+          nextAudio.play();
+        }
+      });
     });
   </script>
 
