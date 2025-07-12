@@ -17,6 +17,7 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     h1 {
       font-size: 36px;
@@ -39,17 +40,49 @@
 </head>
 <body>
 
-  <img src="logo.jpeg" alt="Gospel Logo" class="logo">
+  <img src="logo.jpeg" alt="Logo" class="logo">
 
   <h1>🎶 Gospel End Time Songs</h1>
 
   <div class="song">
     <h3>China Bedala</h3>
-    <audio controls>
+    <audio id="chinaBedala" controls>
       <source src="China_bedala.mp3" type="audio/mp3">
       <p>Your browser does not support the audio element.</p>
     </audio>
   </div>
+
+  <div class="song">
+    <h3>Eni Nalu</h3>
+    <audio id="eniNalu" controls>
+      <source src="Eni_Nalu.mp3" type="audio/mp3">
+      <p>Your browser does not support the audio element.</p>
+    </audio>
+  </div>
+
+  <script>
+    const chinaBedala = document.getElementById("chinaBedala");
+    const eniNalu = document.getElementById("eniNalu");
+
+    // Auto-play Eni Nalu when China Bedala ends
+    chinaBedala.addEventListener("ended", () => {
+      eniNalu.play();
+    });
+
+    // Stop China Bedala if Eni Nalu is clicked
+    eniNalu.addEventListener("play", () => {
+      if (!chinaBedala.paused) {
+        chinaBedala.pause();
+      }
+    });
+
+    // Optional: Stop Eni Nalu if China Bedala is clicked
+    chinaBedala.addEventListener("play", () => {
+      if (!eniNalu.paused) {
+        eniNalu.pause();
+      }
+    });
+  </script>
 
 </body>
 </html>
