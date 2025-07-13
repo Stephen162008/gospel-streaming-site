@@ -124,51 +124,16 @@
   <h1>🎶 Gospel End Time Songs</h1>
 
   <!-- Songs -->
-  <div class="song">
-    <h3>China Bedala</h3>
-    <audio controls>
-      <source src="China_bedala.mp3" type="audio/mp3">
-    </audio>
-  </div>
-
-  <div class="song">
-    <h3>Eni Nalu</h3>
-    <audio controls>
-      <source src="Eni_Nalu.mp3" type="audio/mp3">
-    </audio>
-  </div>
-
-  <div class="song">
-    <h3>Geetham Padedhamu</h3>
-    <audio controls>
-      <source src="Geetham_Padedhamu.mp3" type="audio/mp3">
-    </audio>
-  </div>
-
-  <div class="song">
-    <h3>Meghama Meghama</h3>
-    <audio controls>
-      <source src="Meghama_Meghama.mp3" type="audio/mp3">
-    </audio>
-  </div>
-
-  <div class="song">
-    <h3>Mudrinchavu</h3>
-    <audio controls>
-      <source src="Mudrinchavu.mp3" type="audio/mp3">
-    </audio>
-  </div>
-
-  <div class="song">
-    <h3>Naa Priudu Manchivadu</h3>
-    <audio controls>
-      <source src="Naa_Priudu_Manchivadu.mp3" type="audio/mp3">
-    </audio>
-  </div>
+  <div class="song"><h3>China Bedala</h3><audio controls><source src="China_bedala.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Eni Nalu</h3><audio controls><source src="Eni_Nalu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Geetham Padedhamu</h3><audio controls><source src="Geetham_Padedhamu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Meghama Meghama</h3><audio controls><source src="Meghama_Meghama.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Mudrinchavu</h3><audio controls><source src="Mudrinchavu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Priudu Manchivadu</h3><audio controls><source src="Naa_Priudu_Manchivadu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Sthiti Marenu</h3><audio controls><source src="Naa_Sthiti_Marenu.mp3" type="audio/mp3"></audio></div>
 
   <!-- JavaScript -->
   <script>
-    // Smart audio playback
     const audios = document.querySelectorAll("audio");
 
     audios.forEach((audio, index) => {
@@ -189,7 +154,6 @@
       });
     });
 
-    // Stop All Songs
     function stopAllSongs() {
       audios.forEach(audio => {
         audio.pause();
@@ -197,7 +161,6 @@
       });
     }
 
-    // Menu functions
     function toggleMenu() {
       const menu = document.getElementById("menuDropdown");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
