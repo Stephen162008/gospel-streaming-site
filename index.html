@@ -94,6 +94,11 @@
 </head>
 <body>
 
+  <!-- Stop All Songs Button -->
+  <div style="position: absolute; top: 20px; left: 20px; z-index: 1000;">
+    <button onclick="stopAllSongs()" style="padding: 8px 12px; font-size: 14px;">⏹️ Stop All Songs</button>
+  </div>
+
   <!-- Menu -->
   <div class="menu-container">
     <div class="menu-button" onclick="toggleMenu()">
@@ -169,6 +174,14 @@
         }
       });
     });
+
+    // Stop All Songs
+    function stopAllSongs() {
+      audios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
 
     // Menu functions
     function toggleMenu() {
