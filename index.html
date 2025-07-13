@@ -9,6 +9,7 @@
       background-color: #fef8f0;
       padding: 40px;
       text-align: center;
+      margin: 0;
     }
     img.logo {
       width: 150px;
@@ -36,14 +37,76 @@
       width: 80%;
       max-width: 500px;
     }
+
+    /* Menu styles */
+    .menu-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .menu-button {
+      cursor: pointer;
+      width: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 18px;
+    }
+    .menu-button span {
+      height: 4px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 2px;
+    }
+    .menu-dropdown {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      position: absolute;
+      right: 0;
+      top: 30px;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .menu-dropdown button {
+      display: block;
+      margin: 5px 0;
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Menu -->
+  <div class="menu-container">
+    <div class="menu-button" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="menu-dropdown" id="menuDropdown">
+      <button onclick="showAbout()">About</button>
+      <button onclick="toggleThemes()">Themes</button>
+      <div id="themeOptions" style="display:none;">
+        <button onclick="changeTheme('white')">White</button>
+        <button onclick="changeTheme('black')">Black</button>
+        <button onclick="changeTheme('lightblue')">Light Blue</button>
+        <button onclick="changeTheme('lightcoral')">Light Red</button>
+        <button onclick="changeTheme('lightyellow')">Light Yellow</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo -->
   <img src="logo.jpeg" alt="Logo" class="logo">
 
   <h1>🎶 Gospel End Time Songs</h1>
 
+  <!-- Songs -->
   <div class="song">
     <h3>China Bedala</h3>
     <audio controls>
@@ -72,7 +135,9 @@
     </audio>
   </div>
 
+  <!-- JavaScript -->
   <script>
+    // Smart audio playback
     const audios = document.querySelectorAll("audio");
 
     audios.forEach((audio, index) => {
@@ -92,6 +157,25 @@
         }
       });
     });
+
+    // Menu functions
+    function toggleMenu() {
+      const menu = document.getElementById("menuDropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function showAbout() {
+      alert("App Made By Reuben Stephen");
+    }
+
+    function toggleThemes() {
+      const themeOptions = document.getElementById("themeOptions");
+      themeOptions.style.display = themeOptions.style.display === "block" ? "none" : "block";
+    }
+
+    function changeTheme(color) {
+      document.body.style.backgroundColor = color;
+    }
   </script>
 
 </body>
