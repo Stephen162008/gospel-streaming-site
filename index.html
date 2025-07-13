@@ -79,6 +79,17 @@
       cursor: pointer;
       font-size: 14px;
     }
+    #themeOptions {
+      margin-left: 10px;
+      margin-top: 5px;
+      padding-left: 10px;
+      border-left: 2px solid #ccc;
+      display: none;
+    }
+    #themeOptions button {
+      font-size: 13px;
+      margin: 3px 0;
+    }
   </style>
 </head>
 <body>
@@ -92,7 +103,7 @@
       <button onclick="shareSite()">Share</button>
       <button onclick="showAbout()">About</button>
       <button onclick="toggleThemes()">Themes</button>
-      <div id="themeOptions" style="display:none;">
+      <div id="themeOptions">
         <button onclick="changeTheme('white')">White</button>
         <button onclick="changeTheme('black')">Black</button>
         <button onclick="changeTheme('lightblue')">Light Blue</button>
