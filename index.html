@@ -46,17 +46,22 @@
 
   <div class="song">
     <h3>China Bedala</h3>
-    <audio id="chinaBedala" controls>
+    <audio controls>
       <source src="China_bedala.mp3" type="audio/mp3">
-      <p>Your browser does not support the audio element.</p>
     </audio>
   </div>
 
   <div class="song">
     <h3>Eni Nalu</h3>
-    <audio id="eniNalu" controls>
+    <audio controls>
       <source src="Eni_Nalu.mp3" type="audio/mp3">
-      <p>Your browser does not support the audio element.</p>
+    </audio>
+  </div>
+
+  <div class="song">
+    <h3>Geetham Padedhamu</h3>
+    <audio controls>
+      <source src="Geetham_Padedhamu.mp3" type="audio/mp3">
     </audio>
   </div>
 
@@ -64,7 +69,6 @@
     const audios = document.querySelectorAll("audio");
 
     audios.forEach((audio, index) => {
-      // Pause other audios when one is played
       audio.addEventListener("play", () => {
         audios.forEach((otherAudio) => {
           if (otherAudio !== audio && !otherAudio.paused) {
@@ -74,7 +78,6 @@
         });
       });
 
-      // Auto-play next song when current ends
       audio.addEventListener("ended", () => {
         const nextAudio = audios[index + 1];
         if (nextAudio) {
