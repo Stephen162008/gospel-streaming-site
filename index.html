@@ -42,15 +42,6 @@
       width: 80%;
       max-width: 500px;
     }
-    .skip-buttons {
-      margin-top: 8px;
-    }
-    .skip-buttons button {
-      margin: 0 5px;
-      padding: 6px 10px;
-      font-size: 14px;
-      cursor: pointer;
-    }
 
     .menu-container {
       position: absolute;
@@ -137,17 +128,79 @@
   <h1>🎶 Gospel End Time Songs</h1>
 
   <!-- Songs -->
-  <div class="song"><h3>China Bedala</h3><audio controls id="audio1"><source src="China_bedala.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio1')">⏪ 10s</button><button onclick="skipForward('audio1')">10s ⏩</button></div></div>
-  <div class="song"><h3>Eni Nalu</h3><audio controls id="audio2"><source src="Eni_Nalu.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio2')">⏪ 10s</button><button onclick="skipForward('audio2')">10s ⏩</button></div></div>
-  <div class="song"><h3>Geetham Padedhamu</h3><audio controls id="audio3"><source src="Geetham_Padedhamu.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio3')">⏪ 10s</button><button onclick="skipForward('audio3')">10s ⏩</button></div></div>
-  <div class="song"><h3>Meghama Meghama</h3><audio controls id="audio4"><source src="Meghama_Meghama.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio4')">⏪ 10s</button><button onclick="skipForward('audio4')">10s ⏩</button></div></div>
-  <div class="song"><h3>Mudrinchavu</h3><audio controls id="audio5"><source src="Mudrinchavu.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio5')">⏪ 10s</button><button onclick="skipForward('audio5')">10s ⏩</button></div></div>
-  <div class="song"><h3>Naa Priudu Manchivadu</h3><audio controls id="audio6"><source src="Naa_Priudu_Manchivadu.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio6')">⏪ 10s</button><button onclick="skipForward('audio6')">10s ⏩</button></div></div>
-  <div class="song"><h3>Naa Sthiti Marenu</h3><audio controls id="audio7"><source src="Naa_Sthiti_Marenu.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio7')">⏪ 10s</button><button onclick="skipForward('audio7')">10s ⏩</button></div></div>
-  <div class="song"><h3>Oka Alochana Prauduni</h3><audio controls id="audio8"><source src="Oka_Alochana_Prauduni.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio8')">⏪ 10s</button><button onclick="skipForward('audio8')">10s ⏩</button></div></div>
-  <div class="song"><h3>Okashubodayana</h3><audio controls id="audio9"><source src="Okashubodayana.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio9')">⏪ 10s</button><button onclick="skipForward('audio9')">10s ⏩</button></div></div>
-  <div class="song"><h3>Pranamu Nevaiya</h3><audio controls id="audio10"><source src="Pranamu_Nevaiya.mp3" type="audio/mp3"></audio><div class="skip-buttons"><button onclick="skipBack('audio10')">⏪ 10s</button><button onclick="skipForward('audio10')">10s ⏩</button></div></div>
+  <div class="song"><h3>China Bedala</h3><audio controls><source src="China_bedala.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Eni Nalu</h3><audio controls><source src="Eni_Nalu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Geetham Padedhamu</h3><audio controls><source src="Geetham_Padedhamu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Meghama Meghama</h3><audio controls><source src="Meghama_Meghama.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Mudrinchavu</h3><audio controls><source src="Mudrinchavu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Priudu Manchivadu</h3><audio controls><source src="Naa_Priudu_Manchivadu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Sthiti Marenu</h3><audio controls><source src="Naa_Sthiti_Marenu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Oka Alochana Prauduni</h3><audio controls><source src="Oka_Alochana_Prauduni.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Okashubodayana</h3><audio controls><source src="Okashubodayana.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Pranamu Nevaiya</h3><audio controls><source src="Pranamu_Nevaiya.mp3" type="audio/mp3"></audio></div>
 
   <!-- JavaScript -->
   <script>
-    const audios = document.querySelectorAll
+    const audios = document.querySelectorAll("audio");
+
+    audios.forEach((audio, index) => {
+      audio.addEventListener("play", () => {
+        audios.forEach((otherAudio) => {
+          if (otherAudio !== audio && !otherAudio.paused) {
+            otherAudio.pause();
+            otherAudio.currentTime = 0;
+          }
+        });
+      });
+
+      audio.addEventListener("ended", () => {
+        const nextAudio = audios[index + 1];
+        if (nextAudio) {
+          nextAudio.play();
+        }
+      });
+    });
+
+    function stopAllSongs() {
+      audios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("menuDropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function showAbout() {
+      alert("App Made By Reuben Stephen");
+    }
+
+    function toggleThemes() {
+      const themeOptions = document.getElementById("themeOptions");
+      themeOptions.style.display = themeOptions.style.display === "block" ? "none" : "block";
+    }
+
+    function changeTheme(color) {
+      document.body.style.backgroundColor = color;
+    }
+
+    function shareSite() {
+      const siteURL = "https://stephen162008.github.io/gospel-streaming-site/";
+      if (navigator.share) {
+        navigator.share({
+          title: "Gospel End Time Songs",
+          text: "Listen to powerful gospel tracks!",
+          url: siteURL
+        }).catch((error) => console.log("Sharing failed:", error));
+      } else {
+        navigator.clipboard.writeText(siteURL)
+          .then(() => alert("Link copied to clipboard!"))
+          .catch(() => alert("Unable to copy link."));
+      }
+    }
+  </script>
+
+</body>
+</html>
