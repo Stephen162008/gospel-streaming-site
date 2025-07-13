@@ -89,6 +89,7 @@
       <span></span><span></span><span></span>
     </div>
     <div class="menu-dropdown" id="menuDropdown">
+      <button onclick="shareSite()">Share</button>
       <button onclick="showAbout()">About</button>
       <button onclick="toggleThemes()">Themes</button>
       <div id="themeOptions" style="display:none;">
@@ -175,6 +176,21 @@
 
     function changeTheme(color) {
       document.body.style.backgroundColor = color;
+    }
+
+    function shareSite() {
+      const siteURL = "https://stephen162008.github.io/gospel-streaming-site/";
+      if (navigator.share) {
+        navigator.share({
+          title: "Gospel End Time Songs",
+          text: "Listen to powerful gospel tracks!",
+          url: siteURL
+        }).catch((error) => console.log("Sharing failed:", error));
+      } else {
+        navigator.clipboard.writeText(siteURL)
+          .then(() => alert("Link copied to clipboard!"))
+          .catch(() => alert("Unable to copy link."));
+      }
     }
   </script>
 
