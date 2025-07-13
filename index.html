@@ -35,26 +35,6 @@
       color: #333;
       word-break: break-word;
     }
-
-    .audio-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 5px;
-    }
-
-    .audio-wrap button {
-      padding: 6px 10px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      background-color: #fff;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
     audio {
       width: 80%;
       max-width: 500px;
@@ -144,27 +124,17 @@
 
   <h1>🎶 Gospel End Time Songs</h1>
 
-  <!-- Songs with embedded skip buttons -->
-  <!-- Use audio IDs to target playback -->
-  ${[...Array(10)].map((_, i) => {
-    const titles = [
-      "China Bedala","Eni Nalu","Geetham Padedhamu","Meghama Meghama",
-      "Mudrinchavu","Naa Priudu Manchivadu","Naa Sthiti Marenu",
-      "Oka Alochana Prauduni","Okashubodayana","Pranamu Nevaiya"
-    ];
-    const src = titles[i].replace(/\s+/g, "_") + ".mp3";
-    const id = `audio${i+1}`;
-    return `
-    <div class="song">
-      <h3>${titles[i]}</h3>
-      <div class="audio-wrap">
-        <button onclick="skipBack('${id}')">⏪ 10s</button>
-        <audio controls id="${id}">
-          <source src="${src}" type="audio/mp3">
-        </audio>
-        <button onclick="skipForward('${id}')">10s ⏩</button>
-      </div>
-    </div>`}).join('')}
+  <!-- Songs -->
+  <div class="song"><h3>China Bedala</h3><audio controls><source src="China_bedala.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Eni Nalu</h3><audio controls><source src="Eni_Nalu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Geetham Padedhamu</h3><audio controls><source src="Geetham_Padedhamu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Meghama Meghama</h3><audio controls><source src="Meghama_Meghama.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Mudrinchavu</h3><audio controls><source src="Mudrinchavu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Priudu Manchivadu</h3><audio controls><source src="Naa_Priudu_Manchivadu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Sthiti Marenu</h3><audio controls><source src="Naa_Sthiti_Marenu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Oka Alochana Prauduni</h3><audio controls><source src="Oka_Alochana_Prauduni.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Okashubodayana</h3><audio controls><source src="Okashubodayana.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Pranamu Nevaiya</h3><audio controls><source src="Pranamu_Nevaiya.mp3" type="audio/mp3"></audio></div>
 
   <!-- JavaScript -->
   <script>
@@ -191,16 +161,6 @@
         audio.pause();
         audio.currentTime = 0;
       });
-    }
-
-    function skipBack(id) {
-      const audio = document.getElementById(id);
-      if (audio) audio.currentTime = Math.max(audio.currentTime - 10, 0);
-    }
-
-    function skipForward(id) {
-      const audio = document.getElementById(id);
-      if (audio) audio.currentTime = Math.min(audio.currentTime + 10, audio.duration);
     }
 
     function toggleMenu() {
@@ -236,5 +196,6 @@
       }
     }
   </script>
+
 </body>
 </html>
