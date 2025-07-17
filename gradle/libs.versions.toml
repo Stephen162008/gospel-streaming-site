@@ -1,0 +1,57 @@
+[versions]
+# Core AndroidX libraries
+coreKtx = "1.12.0"
+lifecycleRuntimeKtx = "2.6.2"
+activityCompose = "1.8.0"
+
+# Compose
+composeBom = "2023.10.01" # Or your desired BOM version
+
+# Material 3
+material3 = "1.1.2"
+
+# Glance
+glance = "1.0.0" # Check for the latest stable version of Glance
+
+# Testing libraries
+junit = "4.13.2"
+androidxJunit = "1.1.5"
+espressoCore = "3.5.1"
+
+[libraries]
+# AndroidX Core
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+
+# Compose Bill of Materials (BOM)
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+
+# Compose UI Libraries - Versions will be derived from the BOM
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+
+# Compose Material 3
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+
+# Glance
+androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
+# If you use other Glance modules (like glance-material, glance-material3), add them here too
+# androidx-glance-material = { module = "androidx.glance:glance-material", version.ref = "glance" }
+# androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glance" }
+
+
+# Compose Test Libraries - Versions will be derived from the BOM
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+
+# Standard Testing Libraries (with prefixes for clarity)
+# For testImplementation:
+test-junit = { module = "junit:junit", version.ref = "junit" }
+
+# For androidTestImplementation:
+androidTest-androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
+androidTest-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+
