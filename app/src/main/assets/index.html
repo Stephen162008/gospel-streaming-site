@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gospel End Time Songs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef8f0;
+      padding: 40px;
+      text-align: center;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    img.logo {
+      width: 150px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      font-size: 36px;
+      color: #6d2e91;
+      margin-bottom: 40px;
+    }
+    .song {
+      margin-bottom: 30px;
+    }
+    h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+      word-break: break-word;
+    }
+    audio {
+      width: 95%;
+      max-width: 650px;
+      height: 40px;
+    }
+
+    .menu-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .menu-button {
+      cursor: pointer;
+      width: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 18px;
+    }
+    .menu-button span {
+      height: 4px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 2px;
+    }
+    .menu-dropdown {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      position: absolute;
+      right: 0;
+      top: 30px;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .menu-dropdown button {
+      display: block;
+      margin: 5px 0;
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #themeOptions {
+      margin-left: 10px;
+      margin-top: 5px;
+      padding-left: 10px;
+      border-left: 2px solid #ccc;
+      display: none;
+    }
+    #themeOptions button {
+      font-size: 13px;
+      margin: 3px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stop Button -->
+  <div style="position: absolute; top: 20px; left: 20px; z-index: 1000;">
+    <button onclick="stopAllSongs()" style="padding: 8px 12px; font-size: 14px;">⏹️ Stop</button>
+  </div>
+
+  <!-- Menu -->
+  <div class="menu-container">
+    <div class="menu-button" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="menu-dropdown" id="menuDropdown">
+      <button onclick="shareSite()">Share</button>
+      <button onclick="showAbout()">About</button>
+      <button onclick="toggleThemes()">Themes</button>
+      <div id="themeOptions">
+        <button onclick="changeTheme('white')">White</button>
+        <button onclick="changeTheme('black')">Black</button>
+        <button onclick="changeTheme('lightblue')">Light Blue</button>
+        <button onclick="changeTheme('lightcoral')">Light Red</button>
+        <button onclick="changeTheme('lightyellow')">Light Yellow</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo -->
+  <img src="logo.jpeg" alt="Logo" class="logo">
+
+  <h1>🎶 Gospel End Time Songs</h1>
+
+  <!-- Songs -->
+  <div class="song"><h3>China Bedala</h3><audio controls><source src="China_bedala.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Eni Nalu</h3><audio controls><source src="Eni_Nalu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Geetham Padedhamu</h3><audio controls><source src="Geetham_Padedhamu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Meghama Meghama</h3><audio controls><source src="Meghama_Meghama.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Mudrinchavu</h3><audio controls><source src="Mudrinchavu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Priudu Manchivadu</h3><audio controls><source src="Naa_Priudu_Manchivadu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Sthiti Marenu</h3><audio controls><source src="Naa_Sthiti_Marenu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Oka Alochana Prauduni</h3><audio controls><source src="Oka_Alochana_Prauduni.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Okashubodayana</h3><audio controls><source src="Okashubodayana.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Pranamu Nevaiya</h3><audio controls><source src="Pranamu_Nevaiya.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Pranamu Yehova</h3><audio controls><source src="Pranamu_Yehova.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Shalom Shalom</h3><audio controls><source src="Shalom_Shalom.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Vimochana Pranalika</h3><audio controls><source src="Vimochana_Pranalika.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Shubapradha Nirekshana</h3><audio controls><source src="Shubapradha_Nirekshana.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Thalanchuchu Vunna</h3><audio controls><source src="Thalanchuchu_Vunna.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Mahima Gudaramu</h3><audio controls><source src="Mahima_Gudaramu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Kevalamu Namuchunanu</h3><audio controls><source src="Kevalamu_Namuchunanu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Samanyatha</h3><audio controls><source src="Samanyatha.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Yesaya Pillalara</h3><audio controls><source src="Yesaya_Pillalara.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Nutana Janmanu</h3><audio controls><source src="Nutana_Janmanu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Memu Shakshulam</h3><audio controls><source src="Memu_Shakshulam.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Alpudanu Ayogyudanu</h3><audio controls><source src="Alpudanu_Ayogyudanu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Samasya Rogamu</h3><audio controls><source src="Samasya_Rogamu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Badhyata</h3><audio controls><source src="Badhyata.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Thalli Premanu</h3><audio controls><source src="Thalli_Premanu.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Christulo Vunnavaru</h3><audio controls><source src="Christulo_Vunnavaru.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Yethabaduchuna Meru</h3><audio controls><source src="Yethabaduchuna_Meru.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Naa Visvasa Vada</h3><audio controls><source src="Naa_Visvasa_Vada.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Yathabatu Samayam</h3><audio controls><source src="Yathabatu_Samayam.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Edinamulalo</h3><audio controls><source src="Edinamulalo.mp3" type="audio/mp3"></audio></div>
+  <div class="song"><h3>Neethi Suryudavu</h3><audio controls><source src="Neethi_Suryudavu.mp3" type="audio/mp3"></audio></div>
+
+
+
+  <!-- JavaScript -->
+  <script>
+    const audios = document.querySelectorAll("audio");
+
+    audios.forEach((audio, index) => {
+      audio.addEventListener("play", () => {
+        audios.forEach((otherAudio) => {
+          if (otherAudio !== audio && !otherAudio.paused) {
+            otherAudio.pause();
+            otherAudio.currentTime = 0;
+          }
+        });
+      });
+
+      audio.addEventListener("ended", () => {
+        const nextAudio = audios[index + 1];
+        if (nextAudio) nextAudio.play();
+      });
+    });
+
+    function stopAllSongs() {
+      audios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("menuDropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function showAbout() {
+      alert("App Made By Reuben Stephen");
+    }
+
+    function toggleThemes() {
+      const themeOptions = document.getElementById("themeOptions");
+      themeOptions.style.display = themeOptions.style.display === "block" ? "none" : "block";
+    }
+
+    function changeTheme(color) {
+      document.body.style.backgroundColor = color;
+    }
+
+    function shareSite() {
+      const siteURL = "https://stephen162008.github.io/gospel-streaming-site/";
+      if (navigator.share) {
+        navigator.share({
+          title: "Gospel End Time Songs",
+          text: "Listen to powerful gospel tracks!",
+          url: siteURL
+        }).catch((error) => console.log("Sharing failed:", error));
+      } else {
+        navigator.clipboard.writeText(siteURL)
+          .then(() => alert("Link copied to clipboard!"))
+          .catch(() => alert("Unable to copy link."));
+      }
+    }
+  </script>
+
+</body>
+</html>
